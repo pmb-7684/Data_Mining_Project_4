@@ -1,52 +1,59 @@
 ## Data Mining Project 4
-## Charlotte's Neighborhood Crime Over Time Through Clustering Analysis
+## **Charlotte's Neighborhood Crime Over Time Through Clustering Analysis**
 
-### Introduction
+### **Overview**
+For Project 4, the goal is to work with clustering.  Writing is critical here, as the main goal will be to discuss your process, why you take certain steps (e.g., what preprocessing steps and why), and tell a story around your data and insights gained through both modeling (working with the clustering algorithms we learned about) and visualizations. Thus, your writing should portray your critical thinking about the data, the process, and what knowledge you find.
+
+### **Introduction**
 Crime is a concern for many urban areas in the United States, and Charlotte is no exception. It is important to understand crime patterns and statistics to help communities and law enforcement agencies develop plans, allocate resources, and engage with the community to improve public safety. The Charlotte-Mecklenburg Police Department (CMPD) regularly publishes detailed crime reports. As of July 22, 2024, overall crime in Charlotte has seen a slight increase of 1% compared to the previous year. This includes various types of crimes, categorized broadly into violent crimes and property crimes.
 
 For this project, I plan to explore how crime has evolved over time in different communities and how does the location (such as open field, department store, hotel/motel, etc.) of the incident within neighborhoods effective crime? To answer this question, I will use the CMPD_PATROL_DIVISION and the PLACE_DETAIL-DESCRIPTION columns to examine these trends over time. By determining communities that are experiencing higher than normal levels of crime and specific location, the city, local law enforcement, and community can help allocated resources, develop plans and support community outreach to support all neighborhoods.
 https://data.charlottenc.gov/datasets/charlotte::cmpd-incidents-1/about
 
-###Dataset
+### **What is clustering and how does it work?**
+`Explain what clustering is and how it works (e.g., k-means and/or agglomerative that we have gone over in class).`
 
-The dataset is available from the city of Charlotte's open data portal. Data is available in various formats including CSV and contains both criminal and non-criminal incident reports from 2017 through 2024. It contains 688,973 observations and 29 features.
-These features are 'X', 'Y', 'YEAR', 'INCIDENT_REPORT_ID', 'LOCATION', 'CITY', 'STATE', 'ZIP', 'X_COORD_PUBLIC', 'Y_COORD_PUBLIC', 'LATITUDE_PUBLIC', 'LONGITUDE_PUBLIC', 'DIVISION_ID', 'CMPD_PATROL_DIVISION', 'NPA', 'DATE_REPORTED', 'DATE_INCIDENT_BEGAN', 'DATE_INCIDENT_END', 'ADDRESS_DESCRIPTION', 'LOCATION_TYPE_DESCRIPTION', 'PLACE_TYPE_DESCRIPTION', 'PLACE_DETAIL_DESCRIPTION', 'CLEARANCE_STATUS', 'CLEARANCE_DETAIL_STATUS', 'CLEARANCE_DATE', 'HIGHEST_NIBRS_CODE', 'HIGHEST_NIBRS_DESCRIPTION', 'OBJECTID', and 'GlobalID'.
-The website does not contain detailed metadata to describe. So, an attempt was made to define features based on the dataset. Below are descriptions of the less obvious features:
+### **The Dataset**
 
-•	'X', 'Y' are unknown decimal values.
+The dataset is available from the city of Charlotte's open data portal. Data is available in various formats including CSV and contains both criminal and non-criminal incident reports from 2017 through 2024. It contains 688,973 observations and 29 features.  The website does not contain detailed metadata to describe features. So, an attempt was made to define features based on the dataset. Below are descriptions of the less obvious features:
 
-•	'INCIDENT_REPORT_ID' is the case number associated with the incident.
+•	`X`, `Y` are unknown decimal values.
 
-•	'LOCATION' is the physical address of the incident.
+•	`INCIDENT_REPORT_ID` is the case number associated with the incident.
 
-•	'X_COORD_PUBLIC', 'Y_COORD_PUBLIC' are unknown integer values.
+•	`LOCATION` is the physical address of the incident.
 
-•	'CMPD_PATROL_DIVISION' is the name of the division. It corresponds to numeric 'DIVISION_ID'.
+•	`X_COORD_PUBLIC`, `Y_COORD_PUBLIC` are unknown integer values.
 
-•	'ADDRESS_DESCRIPTION' is a higher-level description of where the incident took place. Field mainly contained 'Location of occurrence' or 'Location where officer took report'
+•	`CMPD_PATROL_DIVISION` is the name of the division. It corresponds to numeric 'DIVISION_ID'.
 
-•	'NPA' is the Neighborhood Profile Area ID, a unique number that is assigned to different neighborhoods in Charlotte. It replaced the previous method of using the name of the community.
+•	`ADDRESS_DESCRIPTION` is a higher-level description of where the incident took place. Field mainly contained 'Location of occurrence' or 'Location where officer took report'
 
-•	'PLACE_TYPE_DESCRIPTION' is a detailed description of 'LOCATION_TYPE_DESCRIPTION' which indicates if private resident, Gas station, etc.
+•	`NPA` is the Neighborhood Profile Area ID, a unique number that is assigned to different neighborhoods in Charlotte. It replaced the previous method of using the name of the community.
 
-•	'CLEARANCE_DETAIL_STATUS' is detailed description of 'CLEARANCE_STATUS' which provides how a case was cleared.
+•	`PLACE_TYPE_DESCRIPTION` is a detailed description of 'LOCATION_TYPE_DESCRIPTION' which indicates if private resident, Gas station, etc.
 
-•	'HIGHEST_NIBRS_CODE' is the highest offense id number for the incident as defined by the FBI's National Incident-Based Reporting System (NIBRS)
+•	`CLEARANCE_DETAIL_STATUS` is detailed description of 'CLEARANCE_STATUS' which provides how a case was cleared.
 
-•	'OBJECTID' is the index.
+•	`HIGHEST_NIBRS_CODE` is the highest offense id number for the incident as defined by the FBI's National Incident-Based Reporting System (NIBRS)
 
-•	'GlobalID' is an unknown alpha-numeric value.
+•	`OBJECTID` is the index.
+
+•	`GlobalID` is an unknown alpha-numeric value.
 
 Mainly, I used CMPD_PATROL_DIVISION and the PLACE_DETAIL-DESCRIPTION columns for this project. The CMPD_PATROL_DIVISION column provides the names of the patrol division for a particular area of the city such as "North" and "Steele Creek" divisions. These divisions will represent the neighborhoods. The PLACE_DETAIL-DESCRIPTION provides the location where a crime took place. For example, "Private Resident", "Open Field", and "Air/Bus/Train Terminal". These columns will allow us to compare neighborhoods and look within neighborhoods to see if certain locations have experienced above average crime incidents.
 
-### Pre-Processing
 
-Pre-processing is one of the most important steps. By thoroughly cleaning the data, we will improve the accuracy of our model and save time by removing errors in advance.
-The pre-processing begins with importing the csv dataset. Initially, I received a “ParserError: Error tokenizing data. C error” which is caused when python process senses some rows have more data than expected. I added on_bad_lines ='skip' to the import statement which would skip any bad rows of data. After the import, there were no rows removed. Its shape is (688973, 29).
-```
-CLT_crime = pd.read_csv(r"C:\Users\SPRQ679X2\Downloads\CMPD_Incidents.csv", on_bad_lines = 'skip')
-pd.set_option('display.max_columns', None)
-```
+### **Data Understanding/Visualization**
+`Use methods to try to further understand and visualize the data. Make sure to remember your initial problems/questions when completing this step.
+While exploring, does anything else stand out to you (perhaps any surprising insights?)`
+
+**How does this step relate to your modeling?**
+
+
+### **Pre-Processing**
+
+Pre-processing is one of the most important steps. By thoroughly cleaning the data, we will improve the accuracy of our model and save time by removing errors in advance.  After the import, there were no rows removed. Its shape is (688973, 29).
 
 #### Irrelevant and Missing Values
 'X' and 'X_COORD_PUBLIC' contained the same value. The only difference was 'X' was in decimal format and 'X_COORD_PUBLIC' was in integer format. This was the same situation for 'Y' and 'Y_COORD_PUBLIC'. Metadata could not be located on the website to determine the purpose of 'X_COORD_PUBLIC' and 'Y_COORD_PUBLIC'. All four features were removed, since they would not be used for analysis in this project.
@@ -90,6 +97,20 @@ CLT_crime.index.name = 'id'
 CLT_crime.head(4)
 ```
 
+### **Modeling(Clustering)**
+`What model(s) do you use to try to solve your problem? Why do you choose those model(s)?
+
+For example, why choose k-means over agglomerative, or vice versa? Or perhaps experiment with both and discuss the pros/cons of each? You may also try experimenting with other methods of clustering not discussed in class.`
 
 
+### **Storytelling (Clustering Analysis)**
+Use this section to further analyze your clusters.
 
+What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?
+
+
+### **Impact Section**
+Discuss the possible impact of your project. This can be socially, ethically, etc. It cannot be something like "our project has no impact" or "our project has no negative impact." Even the most well-intentioned projects *could* have a negative impact. We will not be checking for "right" or "wrong" answers, but showing your critical thinking.
+
+
+### **References**
