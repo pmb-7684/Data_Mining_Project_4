@@ -1,5 +1,5 @@
-## Data Mining Project 4
 ## **Charlotte's Neighborhood Crime Over Time Through Clustering Analysis**
+### **Data Mining Project 4**
 
 ### **Overview**
 For Project 4, the goal is to work with clustering.  Writing is critical here, as the main goal will be to discuss your process, why you take certain steps (e.g., what preprocessing steps and why), and tell a story around your data and insights gained through both modeling (working with the clustering algorithms we learned about) and visualizations. Thus, your writing should portray your critical thinking about the data, the process, and what knowledge you find.
