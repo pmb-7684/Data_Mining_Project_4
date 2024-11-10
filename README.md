@@ -1,5 +1,5 @@
-## Data Mining Project 1
-## Charlotte's Neighborhood Crime Over Time
+## Data Mining Project 4
+## Charlotte's Neighborhood Crime Over Time Through Clustering Analysis
 
 ### Introduction
 Crime is a concern for many urban areas in the United States, and Charlotte is no exception. It is important to understand crime patterns and statistics to help communities and law enforcement agencies develop plans, allocate resources, and engage with the community to improve public safety. The Charlotte-Mecklenburg Police Department (CMPD) regularly publishes detailed crime reports. As of July 22, 2024, overall crime in Charlotte has seen a slight increase of 1% compared to the previous year. This includes various types of crimes, categorized broadly into violent crimes and property crimes.
