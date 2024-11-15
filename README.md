@@ -9,7 +9,7 @@ Previously, [Project 1 ](https://pmb-7684.github.io/Data_Mining_Project_1/) Char
 
 For this project, the data will be explored through clustering analysis.  Again, the data explored how crime has evolved over time in different communities and how does location (such as open field, department store, hotel/motel, etc.) of the incident  within neighborhoods effective crime.  The difference is clustering will be used to explore if certain neighborhood belong to the same cluster and types of crimes likely to happen in those clusters.  
 
- By determining communitites that are experiencing higher than normal levels of crime and specific location, the city, local law enforcement, and community can help allocated resources, develop plans and support community outreach to support all neighborhoods.
+By determining communitites that are experiencing higher than normal levels of crime and specific location, the city, local law enforcement, and community can help allocated resources, develop plans and support community outreach to support all neighborhoods.
 
 CMPD Data [Portal](https://data.charlottenc.gov/datasets/charlotte::cmpd-incidents-1/about)
 
@@ -29,7 +29,7 @@ In general, clustering is the process of grouping items with common characterist
 The dataset is available from the city of Charlotte's open data portal. Data is available in various formats including CSV and contains both criminal and non-criminal incident reports from 2017 through 2024. It contains 688,973 observations and 29 features.
 
 
-###Some Domain and Variable Notes:
+#### Some Domain and Variable Notes:
 
 •	`X`, `Y` are unknown decimal values.
 
@@ -90,7 +90,7 @@ After checking for missing data, there were six columns were missing values: STA
 
 `LOCATION_TYPE_DESCRIPTION` provides a high-level location for the incident. This will be replace with a better feature.
 
-#####**Data Types Checked**
+##### **Data Types Checked**
 
 All variables were of type `object`, except for YEAR, X_COORD_PUBLIC, Y_COORD_PUBLIC, LATITUDE_PUBLIC, LATITUDE_PUBLIC, and NPA.  Those data types are numeric.
 
