@@ -107,9 +107,9 @@ When working with k-mean clustering it is important that all features are on the
 
 The x-labels were removed to reduce the amount of clutter on the axis since there are so many features. We can visually see the importance of standardization. Before standardization, our features ranged from 0 to over 1200. After standardization, all features are between -3 and 4. The standardized data will perform much better.
 
-<img src="images/Scaled_comparison.png" alt="Description" width="600" height="400" />
+<img src="images/Scaled_comparison.png" alt="Description" width="800" height="700" />
 
-<img src="images/correl_map.png" alt="Description" width="600" height="600" />
+<img src="images/correl_map.png" alt="Description" width="800" height="700" />
 
 ** Revisit to section ** I want to see pivot table, but I want a smaller size.
 
