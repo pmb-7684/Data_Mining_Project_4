@@ -100,17 +100,6 @@ Normally, when data is imported, python automatically creates an index; however,
 The data set contains 14 features and 688,345 observations.
 
 
-### **Data Understanding/Visualization**
-`Use methods to try to further understand and visualize the data. Make sure to remember your initial problems/questions when completing this step.
-While exploring, does anything else stand out to you (perhaps any surprising insights?)` <br> 
-When working with k-mean clustering it is important that all features are on the same scale. Recall with k-means algorithm it calculates the distance between points. If we failed to scale, then points in a higher range skew the calculations and likely those calculated would be inaccurate.
-
-The x-labels were removed to reduce the amount of clutter on the axis since there are so many features. We can visually see the importance of standardization. Before standardization, our features ranged from 0 to over 1200. After standardization, all features are between -3 and 4. The standardized data will perform much better.
-
-<img src="images/Scaled_comparison.png" alt="Description" width="800" height="700" />
-
-<img src="images/correl_map.png" alt="Description" width="800" height="700" />
-
 ** Revisit this section ** I want to see pivot table, but I want a smaller size.
 
 | CMPD_PATROL_DIVISION   |   Affray |   Aggravated Assault |   All Other Offenses |   All Other Thefts |   Animal Cruelty |   Arson |   Assisting Gambling |   Assisting Prostitution |   Betting/Wagering |   Bribery |   Burglary/B&E |   Counterfeiting/Forgery |   Credit Card/Teller Fraud |   Curfew/Loitering/Vagrancy Violations |   Damage/Vandalism Of Property |   Disorderly Conduct |   Dog Bite/Animal Control Incident |   Driving Under The Influence |   Drug Equipment Violations |   Drug/Narcotic Violations |   Embezzlement |   Extortion/Blackmail |   False Pretenses/Swindle |   Family Offenses; Nonviolent |   Fire (Accidental/Non-Arson) |   Forcible Fondling |   Forcible Rape |   Forcible Sodomy |   Gambling Equipment Violations |   Gas Leak |   Hacking/Computer Invasion |   Human Trafficking, Commercial Sex Acts |   Human Trafficking, Involuntary Servitude |   Identity Theft |   Impersonation |   Incest |   Indecent Exposure |   Intimidation |   Justifiable Homicide |   Kidnapping |   Liquor Law Violations |   Missing Person |   Motor Vehicle Theft |   Murder |   Negligent Manslaughter |   Other Unlisted Non-Criminal |   Overdose |   Peeping Tom |   Pocket-Picking |   Pornography/Obscene Material |   Prostitution |   Public Accident |   Purchasing Prostitution |   Purse-Snatching |   Robbery |   Sexual Assault With Object |   Shoplifting |   Simple Assault |   Statutory Rape |   Stolen Property Offenses |   Sudden/Natural Death Investigation |   Suicide |   Theft From Building |   Theft From Coin-Operated Machine Or Device |   Theft From Motor Vehicle |   Theft of Motor Vehicle Parts from Vehicle |   Trespass Of Real Property |   Vehicle Recovery |   Weapon Law Violations |   Welfare Fraud |   Wire Fraud |   Worthless Check: Felony (over $2000) |
@@ -133,9 +122,23 @@ The x-labels were removed to reduce the amount of clutter on the axis since ther
 | Westover               |       60 |                 1216 |                 2838 |               3080 |               14 |      71 |                    1 |                        0 |                  1 |         0 |           2040 |                      251 |                        432 |                                     10 |                           2311 |                   18 |                                  1 |                           209 |                         240 |                       1411 |            125 |                    37 |                       498 |                            25 |                            14 |                 165 |             101 |                17 |                               1 |          0 |                          16 |                                        1 |                                          4 |              251 |             181 |        1 |                  29 |           1150 |                      5 |           64 |                      23 |              802 |                  1725 |       34 |                        2 |                          3187 |        421 |             7 |               49 |                             72 |              5 |                78 |                         2 |                48 |       815 |                            4 |          2171 |             2779 |               12 |                        361 |                                  343 |       155 |                   405 |                                           10 |                       3742 |                                         686 |                         350 |                203 |                     229 |               0 |           12 |                                      6 |
 
 
+### **Data Understanding/Visualization**
+`Use methods to try to further understand and visualize the data. Make sure to remember your initial problems/questions when completing this step.
+While exploring, does anything else stand out to you (perhaps any surprising insights?)` <br> 
+When working with k-mean clustering it is important that all features are on the same scale. Recall with k-means algorithm it calculates the distance between points. If we failed to scale, then points in a higher range skew the calculations and likely those calculated would be inaccurate.
+
+The x-labels were removed to reduce the amount of clutter on the axis since there are so many features. We can visually see the importance of standardization. Before standardization, our features ranged from 0 to over 1200. After standardization, all features are between -3 and 4. The standardized data will perform much better.
+
+<img src="images/Scaled_comparison.png" alt="Description" width="800" height="700" />
+
+<img src="images/correl_map.png" alt="Description" width="800" height="700" />
+
+
 
 ### **Modeling(Clustering)**
 `What model(s) do you use to try to solve your problem? Why do you choose those model(s)?For example, why choose k-means over agglomerative, or vice versa? Or perhaps experiment with both and discuss the pros/cons of each? You may also try experimenting with other methods of clustering not discussed in class.`
+For this project, we experimented with k-means and agglomerative. Both algorithms require the data to be standardized. Also, PCA will be used to reduce the number of features in the data set while retaining the most important relationships.
+
 k-means
 
 Pros
@@ -165,12 +168,20 @@ Cons
  <li>comment2</li>
 </ul>
 
-### **Storytelling (Clustering Analysis)**
-`Use this section to further analyze your clusters.  What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?`
+
 #### **Principal Componenet Analysis (PCA)**
 `Explain PCA and it's importance; reduce to (16,3)`
+<img src="images/pca.png" alt="Description" width="400" height="400" />
 
 #### **k-means
+The process for k-means begins with deciding on the number of clusters for our data. There are 16 districts (or neighborhoods) that are now labeled 0 - 15.
+
+Rather than guessing on the number of clusters, the elbow method is used. This method plots the variance based on the number of clusters. The bend in the elbow is selected as the optiminal number of clusters. Based on the elbow chart below, the best number of clusters is subjective but decided on three. Four clusters will be test as well.
+<img src="images/elbow.png" alt="Description" width="400" height="400" />
+
+### **Storytelling (Clustering Analysis)**
+`Use this section to further analyze your clusters.  What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?`
+
 
 ### **Impact Section**
 `Discuss the possible impact of your project. This can be socially, ethically, etc. It cannot be something like "our project has no impact" or "our project has no negative impact." Even the most well-intentioned projects *could* have a negative impact. We will not be checking for "right" or "wrong" answers, but showing your critical thinking.`
