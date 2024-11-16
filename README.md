@@ -104,23 +104,37 @@ Now that we have a clean file, the data set needs to be transformed.  The cluste
 
 <iframe src="table/CLT_pivot_table.html" style="width:100%; height:600px; border:none;"></iframe>
 
+Next, we need to "normalize"  the data in a non-statistical way.  Below, there are a lot of variances between the data points.   To achieve this let's divide the total crime count by the number of years of crime data available. `CLT_pivot_normalized = CLT_pivot / years` Normalization is beneficial for clustering models like k-means.  This model uses distance between points and extreme values can dominate the results.  
+
+Lastly, the data needs to be standardized. `CLT_standard_norm = pd.DataFrame(StandardScaler().fit_transform(CLT_pivot_normalized ),columns = CLT_pivot_normalized .columns)` This is a requirement for both k-means and agglomerative hierarchical clustering.  It transforms the data to having a mean of 0 and standard deviation of 1.
+
+Finally, we have a dataframe with 72 features and 16 observations.
 
 ### **Data Understanding/Visualization**
 `Use methods to try to further understand and visualize the data. Make sure to remember your initial problems/questions when completing this step.
 While exploring, does anything else stand out to you (perhaps any surprising insights?)` <br> 
-When working with k-mean clustering it is important that all features are on the same scale. Recall with k-means algorithm it calculates the distance between points. If we failed to scale, then points in a higher range skew the calculations and likely those calculated would be inaccurate.
+When working with k-mean clustering it is important that all features are on the same scale. Recall with k-means algorithm it calculates the distance between points. If we failed to scale, then points with a higher value will skew the calculations and likely those calculated would be inaccurate.
 
-The x-labels were removed to reduce the amount of clutter on the axis since there are so many features. We can visually see the importance of standardization. Before standardization, our features ranged from 0 to over 1200. After standardization, all features are between -3 and 4. The standardized data will perform much better.
+Referring to the chart below, the x-labels were removed to reduce the amount of clutter on the axis since there are so many features. We can visually see the importance of standardization. Before standardization, our features ranged from 0 to over 1200. After standardization, all features are between -3 and 4. The standardized data will perform much better.
 
 <img src="images/Scaled_comparison.png" alt="Description" width="800" height="700" />
 
+One method of visualizing relationships is through correlation heat map.   Crimes such as bribery, disorderly conduct, and hacking contain a lot of darker colors.  This indicates slightly negative association which means as one crime increase the other crime decreases.
+
+**Talk more about relationships**
 <img src="images/correl_map.png" alt="Description" width="800" height="700" />
 
 
 
 ### **Modeling(Clustering)**
 `What model(s) do you use to try to solve your problem? Why do you choose those model(s)?For example, why choose k-means over agglomerative, or vice versa? Or perhaps experiment with both and discuss the pros/cons of each? You may also try experimenting with other methods of clustering not discussed in class.`
-For this project, we experimented with k-means and agglomerative. Both algorithms require the data to be standardized. Also, PCA will be used to reduce the number of features in the data set while retaining the most important relationships.
+
+#### Principal Componenet Analysis (PCA)
+PCA will be used for both models to reduce the number of features in the data set while retaining the most important relationships. It reduced to just 3 combinations of features.
+
+<img src="images/pca.png" alt="Description" width="400" height="400" />
+
+For this project, we experimented with k-means and agglomerative hierarchical clustering. 
 
 k-means
 
@@ -152,9 +166,6 @@ Cons
 </ul>
 
 
-#### **Principal Componenet Analysis (PCA)**
-`Explain PCA and it's importance; reduce to (16,3)`
-<img src="images/pca.png" alt="Description" width="400" height="400" />
 
 #### **k-means
 The process for k-means begins with deciding on the number of clusters for our data. There are 16 districts (or neighborhoods) that are now labeled 0 - 15.
@@ -162,8 +173,12 @@ The process for k-means begins with deciding on the number of clusters for our d
 Rather than guessing on the number of clusters, the elbow method is used. This method plots the variance based on the number of clusters. The bend in the elbow is selected as the optiminal number of clusters. Based on the elbow chart below, the best number of clusters is subjective but decided on three. Four clusters will be test as well.
 <img src="images/elbow.png" alt="Description" width="400" height="400" />
 
+Another method for determining the number of clusters is silhouette.
+<img src="images/silhouette.png" alt="Description" width="400" height="400" />
+
 ### **Storytelling (Clustering Analysis)**
 `Use this section to further analyze your clusters.  What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?`
+For the k-means algorithm, three and four were selected for the number of clusters (k).
 
 
 ### **Impact Section**
