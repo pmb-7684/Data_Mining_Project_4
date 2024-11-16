@@ -132,7 +132,7 @@ One method of visualizing relationships is through correlation heat map.   Crime
 #### Principal Componenet Analysis (PCA)
 PCA will be used for both models to reduce the number of features in the data set while retaining the most important relationships. It reduced to just 3 combinations of features.
 
-<img src="images/pca.png" alt="Description" width="400" height="400" />
+<img src="images/PCA.png" alt="Description" width="400" height="400" />
 
 For this project, we experimented with k-means and agglomerative hierarchical clustering. 
 
@@ -140,44 +140,46 @@ k-means
 
 Pros
 <ul type ="circle">
- <li>k-means is easier to use and understand in comparision to Agglomerative Hierarchical Clustering</li>
- <li>comment2</li>
+ <li>It is easier to use and understand in comparision to Agglomerative Hierarchical Clustering.</li>
+ <li>It can handle large dataset with many features.</li>
 </ul>
 
 Cons
 <ul type ="circle">
- <li>comment1</li>
- <li>comment2</li>
+ <li>The user must specify the number of clusters in the beginning.</li>
+ <li>It assumes spherical and equally sized clusters. So, not suitable for all datasets.</li>
 </ul>
 
+<br>
 
 Agglomerative Hierarchical Clustering
 
 Pros
 <ul type ="circle">
- <li>comment1</li>
- <li>comment2</li>
+ <li>It does not require that the user to specify the number of clusters in advance.</li>
+ <li>It can handle non-spherical and different sized clusters.</li>
 </ul>
 
 Cons
 <ul type ="circle">
- <li>comment1</li>
- <li>comment2</li>
+ <li>It can be slower.</li>
+ <li>It can be computational complex.</li>
 </ul>
 
 
 
-#### **k-means
+#### **k-means**
 The process for k-means begins with deciding on the number of clusters for our data. There are 16 districts (or neighborhoods) that are now labeled 0 - 15.
 
 Rather than guessing on the number of clusters, the elbow method is used. This method plots the variance based on the number of clusters. The bend in the elbow is selected as the optiminal number of clusters. Based on the elbow chart below, the best number of clusters is subjective but decided on three. Four clusters will be test as well.
+
 <img src="images/elbow.png" alt="Description" width="400" height="400" />
 
 Another method for determining the number of clusters is silhouette.
 <img src="images/silhouette.png" alt="Description" width="400" height="400" />
 
 ### **Storytelling (Clustering Analysis)**
-`Use this section to further analyze your clusters.  What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?`
+`Use this section to further analyze your clusters.  What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?`<br>
 For the k-means algorithm, three and four were selected for the number of clusters (k).
 
 
