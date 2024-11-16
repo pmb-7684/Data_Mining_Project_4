@@ -102,14 +102,6 @@ Now that we have a clean file, the data set needs to be transformed.  The cluste
                           index='CMPD_PATROL_DIVISION',
                           columns='HIGHEST_NIBRS_DESCRIPTION', aggfunc='sum', fill_value=0)`
 
----
-layout: default
----
-
-{% include_relative table/CLT_pivot_table.html %}
-
-
-
 <iframe src="table/CLT_pivot_table.html" style="width:100%; height:600px; border:none;"></iframe>
 
 
