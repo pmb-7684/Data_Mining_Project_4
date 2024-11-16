@@ -136,7 +136,7 @@ PCA will be used for both models to reduce the number of features in the data se
 
 For this project, we experimented with k-means and agglomerative hierarchical clustering. 
 
-k-means
+**k-means**
 
 Pros
 <ul type ="circle">
@@ -152,7 +152,7 @@ Cons
 
 <br>
 
-Agglomerative Hierarchical Clustering
+**Agglomerative Hierarchical Clustering**
 
 Pros
 <ul type ="circle">
