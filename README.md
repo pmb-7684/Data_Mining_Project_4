@@ -106,11 +106,11 @@ Now that we have a clean file, the data set needs to be transformed.  The cluste
 layout: default
 ---
 
-{% include_relative tables/CLT_pivot_table.html %}
+{% include_relative table/CLT_pivot_table.html %}
 
 
 
-<iframe src="tables/CLT_pivot_table.html" style="width:100%; height:600px; border:none;"></iframe>
+<iframe src="table/CLT_pivot_table.html" style="width:100%; height:600px; border:none;"></iframe>
 
 
 ### **Data Understanding/Visualization**
