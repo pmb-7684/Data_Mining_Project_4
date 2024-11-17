@@ -171,11 +171,11 @@ Cons
 #### **k-means**
 The process for k-means begins with deciding on the number of clusters for our data. There are 16 districts (or neighborhoods) that are now labeled 0 - 15.
 
-Rather than guessing on the number of clusters, the elbow method is used. This method plots the variance based on the number of clusters. The bend in the elbow is selected as the optiminal number of clusters. Based on the elbow chart below, the best number of clusters is subjective but decided on three. Four clusters will be test as well.
+Rather than guessing on the number of clusters, the elbow method is used.  This method plots the variance based on the number of clusters.  The bend in the elbow is selected as the optimal number of clusters. It represents where adding more clusters does not change the sum squared distance. Based on the elbow chart below, the best number of clusters is subjective is 3, 4 or 5.
 
 <img src="images/elbow.png" alt="Description" width="400" height="400" />
 
-Another method for determining the number of clusters is silhouette.
+Another method for determining the number of clusters is silhouette.  Another method for determining the number of clusters is silhouette.  This method looks at how similar points are within the same cluster and how different points are in different clusters.  The score provides a range between 1 and -1 where 1 is the best.
 <img src="images/silhouette.png" alt="Description" width="400" height="400" />
 
 ### **Storytelling (Clustering Analysis)**
