@@ -192,4 +192,5 @@ For the k-means algorithm, three and four were selected for the number of cluste
 2. https://towardsdatascience.com/geopandas-101-plot-any-data-with-a-latitude-and-longitude-on-a-map-98e01944b972
 3. https://medium.com/@shankhanilborthakur/plotting-data-visualisation-on-the-map-of-india-using-geopandas-in-python-211bc88c1e4d
 4. CompletedCluseringDemo.ipynb
-5. https://www.statology.org/k-means-clustering-in-python/
+5.
+
