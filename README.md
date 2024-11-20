@@ -180,8 +180,17 @@ Another method for determining the number of clusters is silhouette.  Another me
 
 ### **Storytelling (Clustering Analysis)**
 `Use this section to further analyze your clusters.  What information or insights does it tell you? What have you learned? Were you able to answer your initial problems/questions (if so, discuss that)?`<br>
-For the k-means algorithm, three and four were selected for the number of clusters (k).
+For the k-means algorithm, three, four, and five were selected for the number of clusters (k). Afterwards k was applied to the following code:
+`# Create the model using three clusters
+kmeans = KMeans(n_clusters=4, random_state=21)
 
+# Fit the model
+kmeans.fit(pca_df)
+
+# get what cluster the model thinks the points belong to and add it to our original dataframe
+CLT_standard_norm["Clusters"] = kmeans.predict(pca_df)`
+
+The model have been created, just working on the presentation.
 
 ### **Impact Section**
 `Discuss the possible impact of your project. This can be socially, ethically, etc. It cannot be something like "our project has no impact" or "our project has no negative impact." Even the most well-intentioned projects *could* have a negative impact. We will not be checking for "right" or "wrong" answers, but showing your critical thinking.`
